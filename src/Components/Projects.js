@@ -1,0 +1,20 @@
+import React from 'react';
+import ProjectBox from './ProjectBox';
+import MovieSearchPage from '../images/MovieSearchPage.png';
+import BankingSystem from '../images/BankingSystem.png';
+
+
+const Projects = () => {
+  return (
+    <div>
+      <h1 className='projectHeading'>My <b>Projects</b></h1>
+      <div className='project'>
+        <ProjectBox projectPhoto={MovieSearchPage} projectName="MovieSearchPage" />
+        <ProjectBox projectPhoto={BankingSystem} projectName="BankingSystem" />
+      </div>
+
+    </div>
+  )
+}
+
+export default Projects
