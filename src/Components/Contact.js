@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import "./Contact.css"; // Ensure your CSS is imported
+import { db } from "../firebase"; 
+import { collection, addDoc } from "firebase/firestore";
+import "./Contact.css"; 
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -8,15 +10,33 @@ const Contact = () => {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [successMessage, setSuccessMessage] = useState("");
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert("Message sent successfully!");
-    // You can integrate an email service like EmailJS or send data to a backend API here.
-    // For now, it just shows an alert.
+    setIsSubmitting(true);
+
+    try {
+      await addDoc(collection(db, "messages"), {
+        name: formData.name,
+        email: formData.email,
+        message: formData.message,
+        timestamp: new Date(),
+      });
+
+      // Reset form & show success message
+      setFormData({ name: "", email: "", message: "" });
+      setSuccessMessage("Message sent successfully!");
+    } catch (error) {
+      console.error("Error sending message: ", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -25,6 +45,7 @@ const Contact = () => {
       <div className="form-container">
         <div className="bg-white p-8 rounded-lg shadow-md w-[400px]">
           <h2 className="text-2xl font-semibold text-blue-800 mb-8">Contact Me</h2>
+          {successMessage && <p className="text-green-600 mb-4">{successMessage}</p>}
           <form onSubmit={handleSubmit} className="contact-form">
             <label className="block text-gray-600 mb-2" htmlFor="name">
               Name:
@@ -69,9 +90,10 @@ const Contact = () => {
 
             <button
               type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700"
+              className={`w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
+              disabled={isSubmitting}
             >
-              Send
+              {isSubmitting ? "Sending..." : "Send"}
             </button>
           </form>
         </div>
