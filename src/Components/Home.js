@@ -3,7 +3,7 @@ import Lottie from  "lottie-react";
 import homecoding from "../LottieFiles/homecoding.json";
 import Typed from "./Typed.js";
 import Tilt from 'react-parallax-tilt';
-import Avatar from '../images/Avatar.jpg';
+import Avatar from '../images/Avatar.png';
 import { FaMugHot } from "react-icons/fa";
 
 const Home = () => {
