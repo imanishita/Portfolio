@@ -1,6 +1,6 @@
 import React from 'react';
 import ProjectBox from './ProjectBox';
-import RegretMail from '../images/MovieSearchPage.png';
+import RegretMail from '../images/RegretMail.png';
 import MovieSearchPage from '../images/MovieSearchPage.png';
 import BankingSystem from '../images/BankingSystem.png';
 
