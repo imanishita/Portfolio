@@ -5,6 +5,11 @@ import {CgFileDocument} from "react-icons/cg";
 
 const  ProjectBox = ({projectPhoto, projectName}) => {
   const desc = { 
+    
+    RegretMailSenderDesc : "Developed a 'Regret Mail Scheduler' web application using React, Axios, and Lottie for email scheduling with features like editing and cancellation within 10 minutes. Integrated backend API with CRUD operations to manage scheduled emails and display success/error messages." ,
+    RegretMailSenderGithub : "https://github.com/imanishita/Regret-Mail-Scheduler",
+    RegretMailSenderWebsite : "https://regret-mail-scheduler-git-main-manishita-biswas-projects.vercel.app/",
+    
     MovieSearchPageDesc : "Developed an interactive movie search interface using the Fetch API to retrieve and display movie data.Implemented a responsive design with CSS for a seamless user experience.Utilized JavaScript for user input handling and asynchronous data fetching.",
     MovieSearchPageGithub : "https://github.com/imanishita/MovieSearchPage",
     MovieSearchPageWebsite : "https://imanishita.github.io/MovieSearchPage/",
