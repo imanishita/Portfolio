@@ -1,19 +1,26 @@
-import React from 'react';
-import {FaGithub, FaLinkedin} from "react-icons/fa";
-import {GrMail} from "react-icons/gr";
-import {SiLeetcode} from "react-icons/si"
+import React from "react";
+import { FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
+import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer>
-      <div className='footerLinks'>
-        <a href="https://github.com/imanishita" target='_blank'><FaGithub/></a>
-        <a href="https://www.linkedin.com/in/manishita-b-b32815140/" target='_blank'><FaLinkedin/></a>
-        <a href='mailTo:imanishita17@gmail.com' target='_blank'><GrMail/></a>
-        
+    <footer className="footer">
+      <div className="social-icons">
+        <a href="https://github.com/imanishita" target="_blank" rel="noopener noreferrer">
+          <FaGithub />
+        </a>
+        <a href="https://www.linkedin.com/in/manishita-biswas/" target="_blank" rel="noopener noreferrer">
+          <FaLinkedin />
+        </a>
+        <a href="mailto:biswasmanishita@gmail.com">
+          <FaEnvelope />
+        </a>
       </div>
+      <p className="copyright">
+        © 2025 Manishita Biswas. All rights reserved.
+      </p>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

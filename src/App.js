@@ -1,11 +1,10 @@
 import { Route, Routes } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Nav from './Components/Navbar';
-import Footer from "./Components/Footer";
 import Home from "./Components/Home";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
-
+import Footer from './Components/Footer';
 
 import Project from "./Components/Projects";
 import MoveToTop from "./Components/MoveToTop";
