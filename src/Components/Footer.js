@@ -9,10 +9,10 @@ const Footer = () => {
         <a href="https://github.com/imanishita" target="_blank" rel="noopener noreferrer">
           <FaGithub />
         </a>
-        <a href="https://www.linkedin.com/in/manishita-biswas/" target="_blank" rel="noopener noreferrer">
+        <a href="https://www.linkedin.com/in/manishita-b-b32815140/" target="_blank" rel="noopener noreferrer">
           <FaLinkedin />
         </a>
-        <a href="mailto:biswasmanishita@gmail.com">
+        <a href="mailto:imanishita17@gmail.com">
           <FaEnvelope />
         </a>
       </div>
