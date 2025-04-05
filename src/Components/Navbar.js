@@ -54,9 +54,6 @@ const Nav = () => {
         <nav className={navbarblur ? 'Navbar blur' : 'Navbar'}>
             <div className="logo-theme-toggle">
                 <h1 title='Reload' onClick={() => window.location.reload(true)} className='Logo'>MB</h1>
-                <button onClick={toggleTheme} className="theme-toggle-btn">
-                    {darkMode ? '🌙' : '☀️'}
-                </button>
             </div>
 
             <div className='Hamburger' onClick={showMenu}>

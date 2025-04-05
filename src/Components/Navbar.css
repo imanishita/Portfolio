@@ -1,127 +1,106 @@
-/* === Theme Colors === */
-:root {
-    --bg-color: #121212;
-    --text-color: #ffffff;
-    --highlight-color: #2c2c2c;
-  }
-  
-  /* Light mode override */
-  .light-mode {
-    --bg-color: #ffffff;
-    --text-color: #121212;
-    --highlight-color: #f0f0f0;
-  }
-  
-  /* === Navbar Base === */
-  .Navbar {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    z-index: 999;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  /* Blur effect */
-  .Navbar.blur {
-    backdrop-filter: blur(10px);
-    background-color: rgba(0, 0, 0, 0.6);
-  }
-  
-  /* Logo and Toggle Group */
-  .logo-theme-toggle {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-  
-  .Logo {
-    cursor: pointer;
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--text-color);
-  }
-  
-  /* Theme Toggle Button */
-  .theme-toggle-btn {
-    background: transparent;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--text-color);
-    transition: transform 0.3s ease;
-  }
-  
-  .theme-toggle-btn:hover {
-    transform: scale(1.1);
-  }
-  
-  /* === Hamburger & Nav Links === */
-  .Hamburger {
-    display: none; 
-    cursor: pointer;
-  }
-  
-  .bar {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background-color: var(--text-color);
-    margin: 5px;
-    transition: 0.4s;
-  }
-  
-  .NavbarLinks {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
-  
-  .NavbarLinks li a {
-    text-decoration: none;
-    color: var(--text-color);
-    font-size: 1rem;
-    transition: color 0.3s ease;
-  }
-  
-  .NavbarLinks li a:hover {
-    color: var(--highlight-color);
-  }
-  
-  /* === Creative Dropdown === */
-  .creative-dropdown {
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .creative-dropdown .dropdown {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: var(--bg-color);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 10;
-    padding: 0.5rem 0;
-    border-radius: 8px;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  .creative-dropdown .dropdown.show {
-    display: block;
-  }
-  
-  .creative-dropdown .dropdown li {
-    padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .creative-dropdown .dropdown li:hover {
-    background-color: var(--highlight-color);
-  }
-  
+/* === Navbar Base === */
+.Navbar {
+  background-color: transparent;
+  color: #ffffff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 999;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Optional: if you want a blur effect */
+.Navbar.blur {
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.4); /* subtle transparent black for readability */
+}
+
+/* Logo and Toggle Group */
+.logo-theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.Logo {
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+/* === Hamburger & Nav Links === */
+.Hamburger {
+  display: none;
+  cursor: pointer;
+}
+
+.bar {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+  margin: 5px;
+  transition: 0.4s;
+}
+
+.NavbarLinks {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.NavbarLinks li a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+  font-size: 1rem;
+  font-weight: normal;
+}
+
+.NavbarLinks li a:hover {
+  color: #cccccc;
+}
+
+/* === Creative Dropdown === */
+.creative-dropdown {
+  position: relative;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: 500; 
+  line-height: 1.5;
+}
+
+.creative-dropdown .dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  padding: 0.5rem 0;
+  border-radius: 8px;
+  transition: all 0.3s ease-in-out;
+}
+
+.creative-dropdown .dropdown.show {
+  display: block;
+}
+
+.creative-dropdown .dropdown li {
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+  color: #ffffff;
+}
+
+.creative-dropdown .dropdown li:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+} 
