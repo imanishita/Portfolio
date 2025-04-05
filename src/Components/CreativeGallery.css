@@ -1,0 +1,71 @@
+.gallery-page {
+    padding: 2rem;
+    text-align: center;
+    padding-top: 75px;
+  }
+  
+  .gallery-page h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    font-family: 'Georgia', serif;
+  }
+  
+  .gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+  
+  .gallery-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    background: #ffffff21;
+    
+    /* New Flex Layout to position badge properly */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+  }
+  
+  .gallery-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .gallery-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .gallery-card p {
+    padding: 0.75rem 0 0.25rem;
+    font-weight: 500;
+    font-size: 1rem;
+    color: #fff;
+  }
+  
+  .gallery-description {
+    text-align: center;
+    font-size: 1.1rem;
+    color: #eee7e7;
+    max-width: 800px;
+    margin: 10px auto 30px;
+    line-height: 1.6;
+  }
+  
+  .medium-badge {
+    display: inline-block;
+    margin-top: 4px;
+    padding: 4px 10px;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 0.8rem;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  

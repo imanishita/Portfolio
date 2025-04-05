@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import { db } from "../firebase"; 
+import { db } from "../firebase";
 import { collection, addDoc } from "firebase/firestore";
-import "./Contact.css"; 
+import "./Contact.css";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -29,7 +29,6 @@ const Contact = () => {
         timestamp: new Date(),
       });
 
-      // Reset form & show success message
       setFormData({ name: "", email: "", message: "" });
       setSuccessMessage("Message sent successfully!");
     } catch (error) {
@@ -40,16 +39,13 @@ const Contact = () => {
   };
 
   return (
-    <div className="relative w-full h-screen bg-dark">
-      <div className="stars"></div> {/* Starry background */}
-      <div className="form-container">
-        <div className="bg-white p-8 rounded-lg shadow-md w-[400px]">
-          <h2 className="text-2xl font-semibold text-blue-800 mb-8">Contact Me</h2>
-          {successMessage && <p className="text-green-600 mb-4">{successMessage}</p>}
-          <form onSubmit={handleSubmit} className="contact-form">
-            <label className="block text-gray-600 mb-2" htmlFor="name">
-              Name:
-            </label>
+    <div className="contact-container">
+      <div className="contact-content">
+        <h2>Contact Me</h2>
+        {successMessage && <p className="success-message">{successMessage}</p>}
+        <form onSubmit={handleSubmit} className="contact-form">
+          <div className="form-group">
+            <label htmlFor="name">Name</label>
             <input
               type="text"
               id="name"
@@ -57,13 +53,12 @@ const Contact = () => {
               value={formData.name}
               onChange={handleChange}
               placeholder="Your Name"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
               required
             />
+          </div>
 
-            <label className="block text-gray-600 mb-2" htmlFor="email">
-              Email:
-            </label>
+          <div className="form-group">
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               id="email"
@@ -71,34 +66,31 @@ const Contact = () => {
               value={formData.email}
               onChange={handleChange}
               placeholder="Your Email"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
               required
             />
+          </div>
 
-            <label className="block text-gray-600 mb-2" htmlFor="message">
-              Message:
-            </label>
+          <div className="form-group">
+            <label htmlFor="message">Message</label>
             <textarea
               id="message"
               name="message"
               value={formData.message}
               onChange={handleChange}
               placeholder="Your Message"
-              className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
               required
             ></textarea>
+          </div>
 
-            <button
-              type="submit"
-              className={`w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 ${isSubmitting ? "opacity-50 cursor-not-allowed" : ""}`}
-              disabled={isSubmitting}
-            >
-              {isSubmitting ? "Sending..." : "Send"}
-            </button>
-          </form>
-        </div>
+          <button
+            type="submit"
+            className={`submit-btn ${isSubmitting ? "submitting" : ""}`}
+            disabled={isSubmitting}
+          >
+            {isSubmitting ? "Sending..." : "Send"}
+          </button>
+        </form>
       </div>
-
     </div>
   );
 };

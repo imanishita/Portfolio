@@ -5,12 +5,14 @@ import Home from "./Components/Home";
 import About from "./Components/About";
 import Contact from "./Components/Contact";
 import Footer from './Components/Footer';
-
 import Project from "./Components/Projects";
 import MoveToTop from "./Components/MoveToTop";
+import Artwork from './Components/Artwork';
+import Photography from './Components/Photography';
 import Lottie from  "lottie-react";
 import Sky from "./LottieFiles/Sky.json";
 import HashLoader from "react-spinners/HashLoader";
+
 
 
 function App() {
@@ -51,7 +53,8 @@ function App() {
         <Route path="/About" element={<About/>}/>
         <Route path="/Project" element={<Project/>}/>
         <Route path="/Contact" element={<Contact/>}/>
-      
+        <Route path="/Artwork" element={<Artwork />} />
+        <Route path="/Photography" element={<Photography />} />
 
       </Routes>
       
