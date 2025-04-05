@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { AiOutlineHome } from "react-icons/ai";
 import { BsPerson, BsCodeSlash } from "react-icons/bs";
 import { CgFileDocument } from "react-icons/cg";
-import "./Navbar.css" 
+import "./Navbar.css";
 
 const Nav = () => {
     const [navbarblur, setnavbarblur] = useState(false);
     const [showCreativeDropdown, setShowCreativeDropdown] = useState(false);
+    const [darkMode, setDarkMode] = useState(() => {
+        return localStorage.getItem('theme') === 'light' ? false : true;
+    });
 
     function scrollHandler() {
         setnavbarblur(window.scrollY >= 20);
@@ -31,11 +34,30 @@ const Nav = () => {
         ham[0].classList.remove("showNavbar");
     }
 
+    useEffect(() => {
+        if (darkMode) {
+            document.body.classList.remove('light-mode');
+            localStorage.setItem('theme', 'dark');
+        } else {
+            document.body.classList.add('light-mode');
+            localStorage.setItem('theme', 'light');
+        }
+    }, [darkMode]);
+
+    const toggleTheme = () => {
+        setDarkMode(prev => !prev);
+    };
+
     window.addEventListener("scroll", scrollHandler);
 
     return (
         <nav className={navbarblur ? 'Navbar blur' : 'Navbar'}>
-            <h1 title='Reload' onClick={() => window.location.reload(true)} className='Logo'>MB</h1>
+            <div className="logo-theme-toggle">
+                <h1 title='Reload' onClick={() => window.location.reload(true)} className='Logo'>MB</h1>
+                <button onClick={toggleTheme} className="theme-toggle-btn">
+                    {darkMode ? '🌙' : '☀️'}
+                </button>
+            </div>
 
             <div className='Hamburger' onClick={showMenu}>
                 <span className='bar'></span>
