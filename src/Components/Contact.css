@@ -120,16 +120,28 @@
     }
   }
   
-  /* Additional improvements for smaller devices */
-  @media (max-width: 400px) {
+
+@media (max-width: 400px) {
+    .contact-container {
+      flex-direction: column;
+      margin-top: 60px;
+      padding: 10px;
+    }
+  
+    .contact-content {
+      padding: 0 10px;
+    }
+  
     .contact-content h2 {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
+      margin-bottom: 20px;
     }
   
     .contact-form input,
     .contact-form textarea,
     .submit-btn {
-      max-width: 100%; /* Take full width on very small screens */
+      max-width: 100%;
+      width: 100%;
       font-size: 0.85rem;
     }
   
@@ -139,6 +151,7 @@
   
     .submit-btn {
       padding: 10px;
+      font-size: 0.9rem;
     }
   }
   
