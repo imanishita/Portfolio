@@ -11,28 +11,25 @@ const Nav = () => {
     const [darkMode, setDarkMode] = useState(() => {
         return localStorage.getItem('theme') === 'light' ? false : true;
     });
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
     function scrollHandler() {
         setnavbarblur(window.scrollY >= 20);
     }
 
-    var showMenu = () => {
-        var bar = document.getElementsByClassName("bar");
-        var ham = document.getElementsByClassName("NavbarLinks");
-        bar[0].classList.toggle("barOne");
-        bar[1].classList.toggle("barTwo");
-        bar[2].classList.toggle("barThree");
-        ham[0].classList.toggle("showNavbar");
-    }
+    const toggleMobileMenu = () => {
+        setIsMobileMenuOpen(!isMobileMenuOpen);
+        setShowCreativeDropdown(false); // Close dropdown when toggling main menu
+    };
 
-    var hideMenu = () => {
-        var bar = document.getElementsByClassName("bar");
-        var ham = document.getElementsByClassName("NavbarLinks");
-        bar[0].classList.remove("barOne");
-        bar[1].classList.remove("barTwo");
-        bar[2].classList.remove("barThree");
-        ham[0].classList.remove("showNavbar");
-    }
+    const hideMobileMenu = () => {
+        setIsMobileMenuOpen(false);
+        setShowCreativeDropdown(false);
+    };
+
+    const toggleCreativeDropdown = () => {
+        setShowCreativeDropdown(!showCreativeDropdown);
+    };
 
     useEffect(() => {
         if (darkMode) {
@@ -56,30 +53,48 @@ const Nav = () => {
                 <h1 title='Reload' onClick={() => window.location.reload(true)} className='Logo'>MB</h1>
             </div>
 
-            <div className='Hamburger' onClick={showMenu}>
-                <span className='bar'></span>
-                <span className='bar'></span>
-                <span className='bar'></span>
+            <div className='Hamburger mobile-only' onClick={toggleMobileMenu} aria-expanded={isMobileMenuOpen} aria-label="Toggle Navigation">
+                <span className={`bar ${isMobileMenuOpen ? 'barOne' : ''}`}></span>
+                <span className={`bar ${isMobileMenuOpen ? 'barTwo' : ''}`}></span>
+                <span className={`bar ${isMobileMenuOpen ? 'barThree' : ''}`}></span>
             </div>
 
-            <ul className='NavbarLinks'>
-                <li onClick={hideMenu}><Link to="/"><AiOutlineHome /> Home</Link></li>
-                <li onClick={hideMenu}><Link to="/About"><BsPerson /> About</Link></li>
-                <li onClick={hideMenu}><Link to="/Project"><BsCodeSlash /> Project</Link></li>
+            {/* Mobile Navigation */}
+            <ul className={`NavbarLinks mobile-only ${isMobileMenuOpen ? 'showNavbar' : ''}`}>
+                <li onClick={hideMobileMenu}><Link to="/"><AiOutlineHome /> Home</Link></li>
+                <li onClick={hideMobileMenu}><Link to="/About"><BsPerson /> About</Link></li>
+                <li onClick={hideMobileMenu}><Link to="/Project"><BsCodeSlash /> Project</Link></li>
 
-                <li 
-                    className="creative-dropdown" 
-                    onMouseEnter={() => setShowCreativeDropdown(true)} 
+                <li className="creative-dropdown" onClick={toggleCreativeDropdown}>
+                    <span>Creative ▾</span>
+                    <ul className={`dropdown ${showCreativeDropdown ? 'show' : ''}`}>
+                        <li onClick={hideMobileMenu}><Link to="/artwork">Artwork</Link></li>
+                        <li onClick={hideMobileMenu}><Link to="/photography">Photography</Link></li>
+                    </ul>
+                </li>
+
+                <li onClick={hideMobileMenu}><Link to="/Contact"><CgFileDocument /> Contact</Link></li>
+            </ul>
+
+            {/* Desktop Navigation */}
+            <ul className='NavbarLinks desktop-only'>
+                <li><Link to="/"><AiOutlineHome /> Home</Link></li>
+                <li><Link to="/About"><BsPerson /> About</Link></li>
+                <li><Link to="/Project"><BsCodeSlash /> Project</Link></li>
+
+                <li
+                    className="creative-dropdown"
+                    onMouseEnter={() => setShowCreativeDropdown(true)}
                     onMouseLeave={() => setShowCreativeDropdown(false)}
                 >
                     <span>Creative ▾</span>
                     <ul className={`dropdown ${showCreativeDropdown ? 'show' : ''}`}>
-                        <li onClick={hideMenu}><Link to="/artwork">Artwork</Link></li>
-                        <li onClick={hideMenu}><Link to="/photography">Photography</Link></li>
+                        <li><Link to="/artwork">Artwork</Link></li>
+                        <li><Link to="/photography">Photography</Link></li>
                     </ul>
                 </li>
 
-                <li onClick={hideMenu}><Link to="/Contact"><CgFileDocument /> Contact</Link></li>
+                <li><Link to="/Contact"><CgFileDocument /> Contact</Link></li>
             </ul>
         </nav>
     );

@@ -10,7 +10,7 @@ import MoveToTop from "./Components/MoveToTop";
 import Artwork from './Components/Artwork';
 import Photography from './Components/Photography';
 import Lottie from  "lottie-react";
-import Sky from "./LottieFiles/Sky.json";
+import nightsky from "./LottieFiles/night-sky.json";
 import HashLoader from "react-spinners/HashLoader";
 
 
@@ -41,9 +41,9 @@ function App() {
       ):(
       <div>
       
-      <Lottie className="bg" animationData={Sky} loop={true} />  
-      <Lottie className="bgtwo" animationData={Sky} loop={true} />   
-      <Lottie className="bgtemp" animationData={Sky} loop={true} /> 
+      <Lottie className="bg" animationData={nightsky} loop={true} />  
+      <Lottie className="bgtwo" animationData={nightsky} loop={true} />   
+      <Lottie className="bgtemp" animationData={nightsky} loop={true} /> 
 
       <Nav/>
       <MoveToTop/>

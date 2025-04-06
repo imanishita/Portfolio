@@ -1,34 +1,71 @@
 .footer {
-    background-color: transparent;
-    text-align: center;
-    padding: 1rem;
-    color: white;
-    position: relative;
-    bottom: 0;
-    width: 100%;
-    z-index: 10;
+  background-color: transparent;
+  padding: 1rem;
+  color: white;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center; /* Center the content container */
+  align-items: center; /* Vertically center if needed */
+}
+
+.footer-content-container {
+  max-width: 500px; /* Adjust to your main content width */
+  width: 90%; /* Take up a slightly smaller percentage for visual breathing room */
+  text-align: center; /* Center inline content within the container */
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #a78bfa; /* purple hover */
+  transform: scale(1.2);
+}
+
+.footer p {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 0.5rem;
+}
+
+/* Add a subtle text shadow for better readability */
+.footer-content-container * { /* Apply to all elements within the container */
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Adjust shadow as needed */
+}
+
+/* Adjust for smaller screens if needed */
+@media screen and (max-width: 600px) {
+  .footer {
+      padding: 0.8rem;
   }
-  
+
+  .footer-content-container {
+      width: 95%;
+  }
+
   .social-icons {
-    display: flex;
-    justify-content: center;
-    gap: 1.5rem;
-    margin-bottom: 0.5rem;
+      gap: 1rem;
+      margin-bottom: 0.3rem;
   }
-  
+
   .social-icons a {
-    color: white;
-    font-size: 1.5rem;
-    transition: transform 0.3s ease, color 0.3s ease;
+      font-size: 1.3rem;
   }
-  
-  .social-icons a:hover {
-    color: #a78bfa; /* purple hover */
-    transform: scale(1.2);
+
+  .footer p {
+      font-size: 0.75rem;
   }
-  
-  footer p {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.7);
-  }
-  
+}

@@ -1,7 +1,7 @@
 /* === Navbar Base === */
 .Navbar {
-  background-color: transparent;
-  color: #ffffff;
+  background-color: rgba(0, 0, 0, 0);
+  color: #f0f0f0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -10,27 +10,29 @@
   width: 100%;
   top: 0;
   z-index: 999;
-  transition: background-color 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-/* Optional: if you want a blur effect */
 .Navbar.blur {
-  backdrop-filter: blur(10px);
-  background-color: rgba(0, 0, 0, 0.4); /* subtle transparent black for readability */
+  backdrop-filter: blur(12px);
+  background-color: rgba(0, 0, 0, 0.8);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 /* Logo and Toggle Group */
 .logo-theme-toggle {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 
 .Logo {
   cursor: pointer;
-  font-size: 1.8rem;
-  font-weight: bold;
-  color: #ffffff;
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: 0.5px;
 }
 
 /* === Hamburger & Nav Links === */
@@ -41,41 +43,77 @@
 
 .bar {
   display: block;
-  width: 25px;
+  width: 28px;
   height: 3px;
-  background-color: #ffffff;
-  margin: 5px;
+  background-color: #f0f0f0;
+  margin: 6px;
   transition: 0.4s;
+}
+
+/* Hamburger Menu Open State Styles */
+.Hamburger .barOne {
+  transform: rotate(-45deg) translate(-6px, 7px);
+}
+
+.Hamburger .barTwo {
+  opacity: 0;
+}
+
+.Hamburger .barThree {
+  transform: rotate(45deg) translate(-6px, -7px);
 }
 
 .NavbarLinks {
   display: flex;
-  gap: 2rem;
+  gap: 2.5rem;
   list-style: none;
-  font-size: 1rem;
-  font-weight: normal;
+  font-size: 1.1rem;
+  font-weight: 500;
 }
 
 .NavbarLinks li a {
   text-decoration: none;
-  color: #ffffff;
-  font-size: 1rem;
+  color: #ddd;
+  font-size: inherit;
   transition: color 0.3s ease;
-  font-size: 1rem;
-  font-weight: normal;
+  position: relative;
 }
 
 .NavbarLinks li a:hover {
-  color: #cccccc;
+  color: #fff;
+}
+
+.NavbarLinks li a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.NavbarLinks li a:hover::after {
+  width: 100%;
 }
 
 /* === Creative Dropdown === */
 .creative-dropdown {
   position: relative;
   cursor: pointer;
-  font-size: 1rem;
-  font-weight: 500; 
+  font-size: inherit;
+  font-weight: 500;
   line-height: 1.5;
+}
+
+.creative-dropdown span {
+  color: #ddd;
+  transition: color 0.3s ease;
+}
+
+.creative-dropdown:hover span {
+  color: #fff;
 }
 
 .creative-dropdown .dropdown {
@@ -83,12 +121,13 @@
   position: absolute;
   top: 100%;
   left: 0;
-  background-color: rgba(0, 0, 0, 0.7);
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: rgba(61, 19, 85, 0.162);
+  box-shadow: 0 6px 12px rgba(61, 19, 85, 0.162);
   z-index: 10;
-  padding: 0.5rem 0;
-  border-radius: 8px;
+  padding: 0.7rem 0;
+  border-radius: 6px;
   transition: all 0.3s ease-in-out;
+  min-width: 150px;
 }
 
 .creative-dropdown .dropdown.show {
@@ -96,11 +135,141 @@
 }
 
 .creative-dropdown .dropdown li {
-  padding: 0.5rem 1rem;
-  margin-bottom: 1rem;
-  color: #ffffff;
+  padding: 0.7rem 1.5rem;
+  margin-bottom: 0;
+  color: #ddd;
+  transition: background-color 0.2s ease;
 }
 
 .creative-dropdown .dropdown li:hover {
-  background-color: rgba(255, 255, 255, 0.1);
-} 
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+/* === Mobile Menu Styles === */
+@media screen and (max-width: 768px) {
+  .Navbar {
+      padding: 0.8rem 1.5rem;
+  }
+
+  .Logo {
+      font-size: 1.6rem;
+  }
+
+  .Hamburger {
+      display: block; /* Show hamburger on mobile */
+  }
+
+  /* Show the mobile NavbarLinks and hide the desktop one */
+  .Navbar > .NavbarLinks.mobile-only {
+      display: none; /* Initially hidden */
+  }
+
+  .Navbar > .NavbarLinks.mobile-only.showNavbar {
+      display: flex; /* Show when mobile menu is open */
+      position: absolute;
+      top: 55px;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.9);
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      padding: 1.5rem 0;
+      gap: 0.8rem;
+      z-index: 100;
+  }
+
+  .Navbar > .NavbarLinks.mobile-only li {
+      width: 100%;
+      text-align: center;
+      padding: 0.5rem 0;
+  }
+
+  .Navbar > .NavbarLinks.mobile-only li a {
+      display: block;
+      padding: 0.8rem 0;
+      font-size: 1.1rem;
+  }
+
+  /* Style for the mobile-only creative dropdown */
+  .creative-dropdown.mobile-only {
+      width: 100%;
+      text-align: center;
+  }
+
+  .creative-dropdown.mobile-only span {
+      display: block;
+      padding: 0.8rem 0;
+      font-size: 1.1rem;
+  }
+
+  .creative-dropdown.mobile-only .dropdown {
+      position: static;
+      background-color: rgba(61, 19, 85, 0.162);
+      box-shadow: none;
+      width: 100%;
+      padding: 0;
+      border-radius: 0;
+  }
+
+  .creative-dropdown.mobile-only .dropdown li {
+      padding: 0.8rem 2rem;
+  }
+
+  /* Hide the desktop NavbarLinks on mobile */
+  .Navbar > .NavbarLinks.desktop-only {
+      display: none !important;
+  }
+}
+
+/* Desktop Styles (applied when screen width is greater than 768px) */
+@media screen and (min-width: 769px) {
+  /* Hide the mobile-only NavbarLinks on desktop */
+  .Navbar > .NavbarLinks.mobile-only {
+      display: none !important;
+  }
+
+  /* Show the desktop NavbarLinks */
+  .Navbar > .NavbarLinks.desktop-only {
+      display: flex !important;
+  }
+
+  .Hamburger {
+      display: none; /* Hide hamburger on desktop */
+  }
+}
+
+/* General styling for both desktop and mobile NavbarLinks */
+.Navbar > .NavbarLinks {
+  gap: 2.5rem;
+  list-style: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.Navbar > .NavbarLinks li a {
+  text-decoration: none;
+  color: #ddd;
+  font-size: inherit;
+  transition: color 0.3s ease;
+  position: relative;
+}
+
+.Navbar > .NavbarLinks li a:hover {
+  color: #fff;
+}
+
+.Navbar > .NavbarLinks li a::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+
+.Navbar > .NavbarLinks li a:hover::after {
+  width: 100%;
+}
