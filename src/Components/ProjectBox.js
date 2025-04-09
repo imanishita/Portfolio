@@ -14,10 +14,14 @@ const  ProjectBox = ({projectPhoto, projectName}) => {
     MovieSearchPageGithub : "https://github.com/imanishita/MovieSearchPage",
     MovieSearchPageWebsite : "https://imanishita.github.io/MovieSearchPage/",
 
-    BankingSystemDesc : "A website that shows you over seven specialized yoga postures for specific diseases or health problems. This was a group project made in a team of two for a 36-hour-long online hackathon named Hackodisha 2.0.",
+    BankingSystemDesc : "This is a simple Bank Management System built using Java. It allows users to create accounts, deposit and withdraw money, check balances, and perform basic banking operations. This project demonstrates OOP concepts, file handling, and exception handling in Java.",
     BankingSystemGithub : "https://github.com/imanishita/Banking-System-Using-Java",
     BankingSystemWebsite : "",
-};
+
+    ExpensoDesc : "Designed and developed a fullstack app to track income and expenses with secure user login.Built REST APIs using Spring Boot and integrated them with a React frontend.",
+    ExpensoGithub: "https://github.com/imanishita/Expenso",
+    ExpensoWebsite :"https://expenso-cwjb.vercel.app/",
+  };
 
   let show ='';
   if(desc[projectName + 'Github']===""){
